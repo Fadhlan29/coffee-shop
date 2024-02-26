@@ -26,7 +26,7 @@ class SessionController extends Controller
 
         if (Auth::attempt($userInfo)) {
             session(['role' => Auth::user()->role]);
-            session(['name' => Auth::user()->name]);
+            session(['user' => Auth::user()->name]);
             return redirect('dashboard');
         } else {
             return redirect('')->withErrors('Email dan Password tidak sesuai');

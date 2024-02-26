@@ -106,21 +106,15 @@ class ProductController extends Controller
         $request->validate([
             'name' => 'required',
             'price' => 'required',
-            'image' => 'required'
         ], [
             'name.required' => 'Name must be filled in',
             'price.required' => 'Price must be filled in',
-            'image.required' => 'Image must be filled in',
         ]);
 
-        $data = [
+        Product::where('id', $id)->update([
             'name' => $request->name,
-            'category' => $request->category,
             'price' => $request->price,
-            'image' => $request->image
-        ];
-
-        Product::where('id', $id)->update($data);
+        ]);
 
         return redirect()->to('product')->with('success', 'Data berhasil di Edit');
     }

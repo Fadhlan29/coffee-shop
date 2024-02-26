@@ -33,30 +33,34 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <?php $index = $products->firstItem() ?>
+                        <?php $index = $products->firstItem(); ?>
                         @foreach ($products as $item)
                             <tr>
                                 <th scope="row">{{ $index }}</th>
                                 <td>{{ $item->name }}</td>
                                 <td>{{ $item->category }}</td>
                                 <td>{{ $item->price }}</td>
-                                <td><img src="{{ asset('images/products/'.$item->image) }}" alt="" width="50px" class="img-fluid"></td>
-                                <td class="d-flex">
-                                    <a href="{{ url('product/' . $item->id . '/edit') }}"
-                                        class="btn btn-primary btn-sm mr-2">Edit</a>
-                                    <form onsubmit="return confirm('Are you sure to delete the data?')"
-                                        action="{{ url('product/' . $item->name) }}" class="d-inline" method="post">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" name="submit" class="btn btn-danger btn-sm">Delete</button>
-                                    </form>
+                                <td><img src="{{ asset('images/products/' . $item->image) }}" alt="" width="50px"
+                                        class="img-fluid"></td>
+                                <td>
+                                    <div class="d-flex">
+                                        <a href="{{ url('product/' . $item->id . '/edit') }}"
+                                            class="btn btn-primary btn-sm mr-2">Edit</a>
+                                        <form onsubmit="return confirm('Are you sure to delete the data?')"
+                                            action="{{ url('product/' . $item->name) }}" class="d-inline" method="post">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" name="submit"
+                                                class="btn btn-danger btn-sm">Delete</button>
+                                        </form>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
-                        <?php $index++ ?>
+                        <?php $index++; ?>
                     </tbody>
                 </table>
-                {{ $products->links() }}    
+                {{ $products->links() }}
             </div>
         </div>
     </div>

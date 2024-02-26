@@ -3,7 +3,7 @@
 @section('title', 'Update Product')
 
 @section('content')
-    <form action='{{ url('product/' . $data->id) }}' method='post'>
+    <form action='{{ url('product/' . $data->id) }}' method='post' enctype="multipart/form-data">
         @csrf
         @method('PUT')
         <div class="my-3 p-3 bg-body rounded shadow-sm">
@@ -34,13 +34,6 @@
                         <div class="col-sm-10">
                             <input type="number" class="form-control" name='price' id="price"
                                 value="{{ $data->price }}">
-                        </div>
-                    </div>
-                    <div class="mb-3 row">
-                        <label for="image" class="col-sm-2 col-form-label">Image</label>
-                        <div class="col-sm-10">
-                            <input type="text" class="form-control" name='image' id="image"
-                                value="{{ $data->image }}">
                         </div>
                     </div>
                     <div class="mb-3 row">
