@@ -56,8 +56,8 @@
                                     </div>
                                 </td>
                             </tr>
+                            <?php $index++; ?>
                         @endforeach
-                        <?php $index++; ?>
                     </tbody>
                 </table>
                 {{ $products->links() }}

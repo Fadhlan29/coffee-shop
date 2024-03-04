@@ -50,8 +50,8 @@
                                     </form>
                                 </td>
                             </tr>
+                            <?php $index++ ?>
                         @endforeach
-                        <?php $index++ ?>
                     </tbody>
                 </table>
                 {{ $data->links() }}    

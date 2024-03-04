@@ -9,6 +9,7 @@
         <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
     </a>
 
+
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
@@ -20,10 +21,12 @@
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
 
     <!-- Nav Item - Charts -->
     @if (session('role') == 'owner')
+        <hr class="sidebar-divider">
+        <div class="sidebar-heading">Master</div>
+
         <li class="nav-item {{ request()->is('product*') ? 'active' : '' }}">
             <a class="nav-link" href="{{ url('product') }}">
                 <i class="fas fa-fw fa-chart-area"></i>
@@ -34,24 +37,24 @@
                 <i class="fas fa-fw fa-chart-area"></i>
                 <span>Users Account</span></a>
         </li>
-        <li class="nav-item {{ request()->is('order*') ? 'active' : '' }}">
-            <a class="nav-link" href="{{ url('order') }}">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Orders</span></a>
-        </li>
     @endif
+
+    <hr class="sidebar-divider d-none d-md-block">
+    <div class="sidebar-heading">Transaction</div>
 
     <!-- Nav Item - Tables -->
-    @if (session('role') == 'admin')
-        <li class="nav-item">
-            <a class="nav-link" href="{{ url('orders') }}">
-                <i class="fas fa-fw fa-chart-area"></i>
-                <span>Orders</span></a>
-        </li>
-    @endif
+    <li class="nav-item {{ request()->is('order/create') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('order/create') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Create Orders</span></a>
+    </li>
+    <li class="nav-item {{ request()->is('order') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ url('order') }}">
+            <i class="fas fa-fw fa-chart-area"></i>
+            <span>Orders</span></a>
+    </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

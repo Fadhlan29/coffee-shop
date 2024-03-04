@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('admin_id');
+            $table->string('code')->unique();
             $table->integer('discount');
             $table->integer('total_price')->nullable(false);
             $table->enum('status', ['Paid', 'Unpaid', 'Cancel']);

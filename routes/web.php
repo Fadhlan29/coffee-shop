@@ -27,9 +27,18 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard.index');
     });
-    Route::resource('product', ProductController::class);
-    Route::resource('order', OrderController::class);
-    Route::resource('account', AccountController::class);
+
+    Route::middleware(['role:owner'])->group(function () {
+        // Routes accessible by 'owner' role
+        Route::resource('product', ProductController::class);
+        Route::resource('order', OrderController::class);
+        Route::resource('account', AccountController::class);
+    });
+
+    Route::middleware(['role:admin'])->group(function () {
+        // Routes accessible by 'admin' role
+        Route::resource('order', OrderController::class);
+    });
 });
 
 Route::get('/home', function () {

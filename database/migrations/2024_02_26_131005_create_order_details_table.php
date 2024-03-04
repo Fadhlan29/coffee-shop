@@ -17,7 +17,7 @@ return new class extends Migration
             $table->increments('id');
             $table->unsignedInteger('order_id');
             $table->unsignedInteger('product_id');
-            $table->integer('quantity')->nullable(false);
+            $table->integer('quantity');
             $table->timestamps();
 
             $table->foreign('product_id')->references('id')->on('products');
